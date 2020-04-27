@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState, useEffect} from 'react';
+
+
+
 import './App.css';
 
 function App() {
+
+  useEffect(()=>{
+    fetch("https://unogs-unogs-v1.p.rapidapi.com/aaapi.cgi?q=get%3Anew7%3AUS&p=1&t=ns&st=adv", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-host": "unogs-unogs-v1.p.rapidapi.com",
+		"x-rapidapi-key": `${process.env.REACT_APP_API_KEY}`
+	}
+})
+.then(res=> res.json())
+.then(response => {
+  console.log(response);
+  
+})
+.catch(err => {
+  console.log(err);
+  
+});
+    
+  })
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <p>Hello world</p>
     </div>
   );
 }
