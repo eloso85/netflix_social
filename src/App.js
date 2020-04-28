@@ -1,12 +1,18 @@
 import React,{useState, useEffect} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
+import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 
 import './App.css';
+import MovieCard from './components/MovieCard'
+import NavigationBar from './components/NavigationBar';
 
 function App() {
 
-  const[movies, setMovies] = useState([]);
+  const[data, setMovies] = useState([]);
   const[isLoading, setIsLoading] = useState(true);
 
   useEffect(()=>{
@@ -34,8 +40,16 @@ function App() {
 
   return (
     <div className="App">
-     <p>Hello world</p>
+    <NavigationBar />
+    <Container>
+      <Row>
+        
+    {data.map(items=><Col><MovieCard key={items.netflixid} items={items}/></Col>)}
+    
+     </Row>
+     </Container>
     </div>
+    
   );
 }
 
